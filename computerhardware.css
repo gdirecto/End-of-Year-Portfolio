@@ -1,0 +1,27 @@
+* {
+    font-family:Garamond;
+}
+area {
+    border:3px solid black;
+}
+p {
+    display:inline-block;
+}
+img{
+    display:inline-block;
+    }
+.line {
+    width:900px;
+    position:relative;
+    left:60px;
+    bottom:60px;
+}
+.pic {
+    width:200px;
+}
+.jay {
+    width:900px;
+    position:relative;
+    bottom:20px;
+}
+    

@@ -1,0 +1,49 @@
+* {
+    color:#dd4c4c;
+    font-family:Garamond;
+}
+p {
+    font-size:20px;
+}
+ol {
+    font-size:20px;
+}
+ul {
+    font-size:20px;
+}
+body {
+  
+    background-image: url("http://static.tumblr.com/0b1146a8fca1447dbd00342a6f383700/zqdyc6b/C03mqaskj/tumblr_static_tumblr_static_black_background_wood_2560x1440_by_starlyz-d4n0342.jpg");
+}
+div > div > div {
+    display:inline-block;
+}
+
+.image {
+  height:140px;
+  width: 210px;
+  margin-top:30px;
+}
+
+.image2 {
+  height:140px;
+  margin-top:100px;
+}
+
+.image3 {
+  height:140px;
+  margin-top:140px;
+}
+
+.image4 {
+  height:130px;
+}
+
+.image5 {
+  height:200px;
+}
+table {
+    float:right;
+    position:relative;
+    right:50px;
+}

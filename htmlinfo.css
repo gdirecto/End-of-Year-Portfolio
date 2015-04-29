@@ -1,0 +1,25 @@
+body {
+    background-image: url("http://static.tumblr.com/0b1146a8fca1447dbd00342a6f383700/zqdyc6b/C03mqaskj/tumblr_static_tumblr_static_black_background_wood_2560x1440_by_starlyz-d4n0342.jpg");
+}
+* {
+    font-family:Garamond;
+    color:#dd4c4c;
+}
+p {
+    font-size:20px;
+}
+.tag {
+    color:#ffee45;
+}
+.effect {
+  border: none;
+  margin: 0 auto;
+}
+.effect:hover {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}

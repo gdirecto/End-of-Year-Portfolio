@@ -1,0 +1,9 @@
+body{font-family:Garamond; background-color:#e0e0e0;}
+#header{border:2em; background-color:#9881F5; border-radius:2.5em;}
+.name{width:12em; text-align:center; font-size:2em; border:none;}
+#title{width:12em; text-align:center; text-align:center; font-size:3em;}
+#input{font-size:1.5em;}
+#left-display{}
+#display{}
+.tables{width:35em; height:.9em;}
+.tablesE{width:1em; height:.9em; margin-left:3em}

@@ -1,0 +1,34 @@
+body {
+  background-image: url("http://mama-beach.com/mama2/wp-content/uploads/2013/07/photodune-4088822-beauty-beach-and-limestone-rocks-l.jpg");
+  background-position:center;
+  background-size:cover;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+p {
+  font-family: Arial;
+}
+
+#weekday {
+  font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
+  font-weight: bold;
+  color: white;
+  font-size: 6em;
+  text-align: center;
+}
+
+#date {
+  font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
+  font-weight: bold;
+  color: white;
+  font-size: 6em;
+  text-align: center;
+}
+
+#clock {
+  font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
+  font-weight: bold;
+  color: white;
+  font-size: 6em;
+  text-align: center;
+}

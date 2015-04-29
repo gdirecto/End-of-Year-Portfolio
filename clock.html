@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel='stylesheet' href='clock.css' />
+    <meta charset="utf-8">
+    <title>Alarm Clock</title>
+</head>
+
+<body>
+    <div id='weekday'></div>
+    <div id='date'></div>
+    <div id='clock'></div>
+    <p>Alarm:
+        <select id='hourdropbox'></select>
+        :
+        <select id='minutedropbox'></select>
+        :
+        <select id='seconddropbox'></select>
+    </p>
+    <br>
+    <br>
+    <input id="setAlarm" type="button" value="Set Alarm" onclick="alarmSet()" />
+    <input id="resetAlarm" type="button" value="Reset" onclick="disableAlarm()" />
+
+    <script src='clock.js'></script>
+
+
+</body>
+
+</html>

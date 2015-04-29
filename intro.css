@@ -1,0 +1,62 @@
+* {
+    font-family:Garamond;
+    color: #dd4c4c;
+}
+body {
+    background-image: url("http://static.tumblr.com/0b1146a8fca1447dbd00342a6f383700/zqdyc6b/C03mqaskj/tumblr_static_tumblr_static_black_background_wood_2560x1440_by_starlyz-d4n0342.jpg");
+}
+h1 {
+    color: white;
+    text-align: center;
+}
+.csimage {
+    height: 120px;
+    width: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.description {
+    display:inline-block;
+    /*border: 1px solid white;
+    border-radius: 25px;*/
+    height:225px;
+    width: 225px;
+    margin-left: 100px;
+}
+.label {
+    color: white;
+}
+#intro {
+    margin-left: 230px;
+    font-size: 20px;
+}
+#navbar {
+    border: 2px solid white;
+    border-radius: 20px;
+    font-size: 15px;
+    font-family: Garamond;
+    font-weight: bold;
+    text-shadow: 3px 2px 3px gray;
+    float: left;
+    margin: 5px;
+    padding: 5px;
+}
+#navbar ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+#navbar li {
+    list-style: none;
+    margin: 5px;
+}
+#navbar a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 8px 8px 8px;
+}
+#navbar a:hover {
+    color: #dd4c4c;
+    background-color: none;
+}
