@@ -1,22 +1,311 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
     <title>Gabi's Webpage</title>
+    <link rel='stylesheet' href='vindinium.css' />
 </head>
+
 <body>
-    <h1>Vindinium Page</h1>
+    <h1 style="text-align:center; font-style:Arcade Classic Regular"><img src="http://vindinium.org/assets/img/ui/player1.png"><img src="http://vindinium.org/assets/img/ui/player2.png"> Vindinium <img src="http://vindinium.org/assets/img/ui/player3.png"><img src="http://vindinium.org/assets/img/ui/player4.png"></h1>
+    <div id="navbar">
+        <ul>
+            <li><a href="index.html">Home</a>
+            </li>
+            <li><a href="aboutme.html">About Me</a>
+            </li>
+            <li><a href="htmlinfo.html">About HTML/CSS</a>
+            </li>
+            <li><a href="computerhardware.html">Computer Hardware</a>
+            </li>
+            <li><a href="calc.html">Calculator</a>
+            </li>
+            <li><a href="detectype.html">Detectype</a>
+            </li>
+            <li><a href="calendar.html">Calendar</a>
+            </li>
+            <li><a href="clock.html">Clock</a>
+            </li>
+            <li><a href="vindinium.html">Vindinium</a>
+            </li>
+        </ul>
+    </div>
+    <br>
     <div>
-        <h2>What is Vindinium?</h2>
-        <p>Vindinium is an Artificial Intelligence (AI) challenge program that allows four bots to fight in the land of Vindinium. 
-            In order to fight, you need to create code that will complete all of the actions</p>
+        <div id="h2">
+            <h2>What is Vindinium?</h2>
+        </div>
+        <p>Vindinium is an Artificial Intelligence (AI) challenge program that allows four bots to fight in the land of Vindinium. In order to fight, users need to create code in the programming language of their choice (Java, Javascript, etc.) to complete actions in the predetermined number of turns.</p>
         <h3>How To Play</h3>
-        <p>...</p>
+        <img src="Vindinium.jpg">
+        <p>In order to win, the player must finish with the largest amount of gold. To produce gold, the hero must steal mines which are guarded by goblins. When the player defeats the goblin, they become the owner and the goblin guards the mine for you. Each mine produces one piece of gold per turn.</p>
+        <p>If a mine is already taken, the player trying to steal the mine will battle the goblin for the mine. The battle will cost the player 20 HP and if he survives, the mine belongs to him.</p>
+        <p>Each player starts off with 100 HP (health). Each turn, the player loses 1 HP. If the hero steals a mine, they lose 20 HP. If the hero fights another hero and loses, they are left with 0 HP and die. If the hero wins, they lose 1 HP and gain all of the opponent's mines. To restore a player's health, they need to travel to a tavern where they will buy a beer for 2 gold pieces which restores 50 HP. A hero's HP cannot exceed 100.</p>
+        <p>If a player dies, they are respawned with 100 HP, all of their gold, but no mines.</p>
+        <p>If a user's code fails to send an order within the given delay (1 second), the player times out and will stay in the same position until the game has ended.</p>
     </div>
     <div>
-        <h2>My Bot</h2>
-        <p>Talk about what your bot does</p>
+        <div id="h2">
+            <h2>My Bot</h2>
+        </div>
+        <p>The bot that I created hunts and attacks other players when they have low health, goes to taverns when it has low health, steals enemy mines, and collects free mines.</p>
+        <h3>My Code</h3>
+        <div id="codeArea">
+            <div id="code">
+                <code><pre>
+var Bot = require('bot');
+var PF = require('pathfinding');
+// var bot = new Bot('ceu2uar7', 'training', 'http://24.6.28.217:9000');
+var bot = new Bot('yv7awhbn', 'training', 'http://vindinium.org');
+var goDir;
+var Promise = require('bluebird');
+Bot.prototype.botBrain = function() {
+    return new Promise(function(resolve, reject) {
+        _this = bot;
+        /* Write your bot below Here */
+        /* Set `bot.goDir` in the direction you want to go */
+        // Variables used throughout code //
+        var myPos = [bot.yourBot.pos.x, bot.yourBot.pos.y];
+        var enemyMines = []; // This variable checks the position of enemy mines //
+        if(bot.yourBot.id != 1) enemyMines = enemyMines.concat(bot.bot1mines);
+        if(bot.yourBot.id != 2) enemyMines = enemyMines.concat(bot.bot2mines);
+        if(bot.yourBot.id != 3) enemyMines = enemyMines.concat(bot.bot3mines);
+        if(bot.yourBot.id != 4) enemyMines = enemyMines.concat(bot.bot4mines);
+        // This variable contains the bots and removes mine so there the code only runs through enemy bots //
+        var enemyBots = [bot.bot1, bot.bot2, bot.bot3, bot.bot4]; 
+        enemyBots.splice(bot.yourBot.id - 1, 1);
+        var closestMine = bot.freeMines[0];
+        var targetPerson;
+        var closestEnemyMines = enemyMines[0];
+        var closestTavern = bot.taverns[0];
+        // This function runs through the enemy bots and checks if their life is below 50 //
+
+        function checkForWeakPerson() {
+            for(i = 0; i < enemyBots.length; i++) {
+                if(enemyBots[i].life <= 50) {
+                    targetPerson = enemyBots[i];
+                    return true;
+                    console.log("target person: " + targetPerson);
+                }
+            }
+        }
+        // This function runs checks if enemy mines are closer than free mines //
+
+        function checkDistanceForEFMines() {
+            for(i = 0; i < enemyMines.length; i++) {
+                if(bot.findDistance(myPos, enemyMines[i]) < bot.findDistance(myPos, closestMine)) {
+                    closestEnemyMines = enemyMines[i];
+                    console.log("enemy mines closer");
+                }
+            }
+        }
+        // This function checks if there are any free mines left and if not, goes to enemy mines //
+
+        function checkEFMines() {
+            if(bot.freeMines.length === 0) {
+                for(i = 0; i < enemyMines.length; i++) {
+                    if(bot.findDistance(myPos, closestEnemyMines) > bot.findDistance(myPos, enemyMines[i])) {
+                        closestEnemyMines = enemyMines[i];
+                        console.log("no more free mines");
+                    }
+                }
+            }
+        }
+        // This code attacks closest enemy bot when there are no more free mines, my health is greater than 50, 
+        and other bots health is less than 50// 
+        if(bot.freeMines.length === 0 && bot.yourBot.life >= 50 && checkForWeakPerson()) {
+            bot.goDir = bot.findPath(myPos, [targetPerson.pos.x, targetPerson.pos.y])
+            console.log("x:" + targetPerson.pos.x);
+            console.log("y:" + targetPerson.pos.y);
+            console.log("attack");
+        }
+        // This code makes the bot stay at the tavern until it's health is 100 //
+        else if(bot.findDistance(myPos, closestTavern) === 2 && bot.yourBot.life < 80) {
+            bot.goDir = bot.findPath(myPos, closestTavern);
+            console.log("stay health");
+        }
+        // This code finds the nearest tavern when the health is less than 20 //
+        else if(bot.yourBot.life <= 40) {
+            for(i = 0; i < bot.taverns.length; i++) {
+                if(bot.findDistance(myPos, closestTavern) > bot.findDistance(myPos, bot.taverns[i])) {
+                    closestTavern = bot.taverns[i];
+                }
+            }
+            bot.goDir = bot.findPath(myPos, closestTavern);
+            console.log("get health");
+        }
+        // This code finds nearest enemy mines and goes in that direction if there are no more free mines //
+        else if((checkDistanceForEFMines()) || (checkEFMines())) {
+            bot.goDir = bot.findPath(myPos, closestEnemyMines);
+            console.log("enemy mines");
+        }
+        // This code finds nearest free mine and goes in that direction // 
+        else {
+            for(i = 0; i < bot.freeMines.length; i++) {
+                if(bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i];
+                }
+            }
+            bot.goDir = bot.findPath(myPos, closestMine);
+            console.log("free mines");
+        }
+        /* DON'T REMOVE ANTYTHING BELOW THIS LINE */
+        resolve();
+    });
+}
+            bot.runGame();
+                </pre>
+            </code>
+            </div>
+        </div>
         <h3>How It Works</h3>
-        <p>Talk about the code you included to make it work (use skeleton.js)</p>
-    </div>
+        <div class="explainCode">
+            <code><pre>
+var Bot = require('bot');
+var PF = require('pathfinding');
+// var bot = new Bot('ceu2uar7', 'training', 'http://24.6.28.217:9000');
+var bot = new Bot('yv7awhbn', 'training', 'http://vindinium.org');
+var goDir;
+var Promise = require('bluebird');
+Bot.prototype.botBrain = function() {
+    return new Promise(function(resolve, reject) {
+        _this = bot;
+            </pre></code>
+        </div>
+        <p>This code creates the function that I put my code in and the global variables that make the bot run. Every bot has these and I did not write this part of the code.</p>
+        <br>
+        <div class="explainCode">
+            <code><pre>
+var myPos = [bot.yourBot.pos.x, bot.yourBot.pos.y];
+var enemyMines = []; // This variable checks the position of enemy mines //
+if(bot.yourBot.id != 1) enemyMines = enemyMines.concat(bot.bot1mines);
+if(bot.yourBot.id != 2) enemyMines = enemyMines.concat(bot.bot2mines);
+if(bot.yourBot.id != 3) enemyMines = enemyMines.concat(bot.bot3mines);
+if(bot.yourBot.id != 4) enemyMines = enemyMines.concat(bot.bot4mines);
+// This variable contains the bots and removes mine so there the code only runs through enemy bots //
+var enemyBots = [bot.bot1, bot.bot2, bot.bot3, bot.bot4]; 
+enemyBots.splice(bot.yourBot.id - 1, 1);
+var closestMine = bot.freeMines[0];
+var targetPerson;
+var closestEnemyMines = enemyMines[0];
+var closestTavern = bot.taverns[0];
+         </pre></code>
+        </div>
+        <p>These are the variables used throughout my code. Here is what each variable does:</p>
+        <ul>
+            <li>myPos contains my bot's coordinates throughout the game.</li>
+            <li>enemyMines checks the position of all of my enemy bots mines by taking each bots id and checking it with my own. If my id does not match the other bot's id, it is marked as an "enemy" bot and the coordinates of it's mines are stored.</li>
+            <li>enemyBots contains the all of the bots information but removes mine so the code only runs through enemy bots.</li>
+            <li>closestMine contains the coordinates of all the free mines.</li>
+            <li>targetPerson is an empty variable that is used in another function.</li>
+            <li>closestEnemyMines contains the coordinates of first item in the enemyMines array.</li>
+            <li>closestTavern contains the coordinates of the taverns.</li>
+        </ul>
+        <br>
+        <div class="explainCode">
+            <code><pre>
+function checkForWeakPerson() {
+    for(i = 0; i < enemyBots.length; i++) {
+        if(enemyBots[i].life <= 50) {
+            targetPerson = enemyBots[i];
+            return true;
+            console.log("target person: " + targetPerson);
+            }
+        }
+    }
+            </pre></code> 
+        </div>
+        <p>This function checks if the enemy bot's have health below 50 HP. After the function is declared, I wrote a for loop to run through the enemyBots variable. Under the for loop I created an if statement that states that if any of the bot's life is less than or equal to 50, make the empty variable, targetPerson, equal to the bot with the lowest health. I then put a return statement which equals true so I can use it later in the code. I always include console.log to see what my bot is thinking when the code is running; "target person: " + targetPerson tells me how many spaces away the target person is.</p>
+        <br>
+        <div class="explainCode">
+            <code><pre>
+function checkDistanceForEFMines() {
+    for(i = 0; i < enemyMines.length; i++) {
+        if(bot.findDistance(myPos, enemyMines[i]) < bot.findDistance(myPos, closestMine)) {
+            closestEnemyMines = enemyMines[i];
+            console.log("enemy mines closer");
+            }
+        }
+    }
+function checkEFMines() {
+    if(bot.freeMines.length === 0) {
+        for(i = 0; i < enemyMines.length; i++) {
+            if(bot.findDistance(myPos, closestEnemyMines) > bot.findDistance(myPos, enemyMines[i])) {
+                 closestEnemyMines = enemyMines[i];
+                 console.log("no more free mines");
+                }
+            }
+        }
+    }
+            </pre></code> 
+        </div>
+        <p>These two functions are used together later in the code. The first checks if enemy mines are closer than free mines and if so, go to the enemy mine. The second checks if there are any free mines available and if not, go to an enemy mine.</p>
+        <br>
+        <div class="explainCode">
+            <code><pre>
+if(bot.freeMines.length === 0 && bot.yourBot.life >= 50 && checkForWeakPerson()) {
+    bot.goDir = bot.findPath(myPos, [targetPerson.pos.x, targetPerson.pos.y])
+    console.log("x:" + targetPerson.pos.x);
+    console.log("y:" + targetPerson.pos.y);
+    console.log("attack");
+    }
+            </pre></code>
+        </div>
+        <p>This if statement makes my bot hunt and attack other bots if there are no more free mines, my bot's health is above 50 HP, and if the enemy bot's life is less than 50 HP.</p>
+        <br>
+        <div class="explainCode">
+            <code><pre>
+else if(bot.findDistance(myPos, closestTavern) === 2 && bot.yourBot.life < 80) {
+    bot.goDir = bot.findPath(myPos, closestTavern);
+    console.log("stay health");
+    }
+else if(bot.yourBot.life <= 40) {
+    for(i = 0; i < bot.taverns.length; i++) {
+        if(bot.findDistance(myPos, closestTavern) > bot.findDistance(myPos, bot.taverns[i])) {
+            closestTavern = bot.taverns[i];
+            }
+        }
+        bot.goDir = bot.findPath(myPos, closestTavern);
+        console.log("get health");
+    }
+            </pre></code>
+       </div>
+       <p>These else if statements make the bot go to the tavern when its health is below 40 and stay at the tavern until its health is 100. I am using if/else if/else statements throughout my code, so I have to go from most complex to most general. Because of this, I put the code that makes the bot stay at the tavern before the code that makes the bot go to the tavern when it's health is low.</p>
+       <br>
+       <div class="explainCode">
+           <code><pre>
+else if((checkDistanceForEFMines()) || (checkEFMines())) {
+    bot.goDir = bot.findPath(myPos, closestEnemyMines);
+    console.log("enemy mines");
+    }           
+           </pre></code>
+       </div>
+       <p>This else if statement takes in the function that checks the distance between enemy and free mines and the function that checks if there are any free mines available and uses those as parameters. By using functions to create the conditions for this action, I can make my bot find enemy mines until very specific instruction.</p>
+       <br>
+       <div class="explainCode">
+           <code><pre>
+else {
+    for(i = 0; i < bot.freeMines.length; i++) {
+        if(bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+            closestMine = bot.freeMines[i];
+            }
+        }
+        bot.goDir = bot.findPath(myPos, closestMine);
+        console.log("free mines");
+    }
+           </pre></code>
+       </div>
+       <p>This else statement has no parameters because if none of the other statements check out, then my bot will collect free mines.</p>
+       <br>
+       <div class="explainCode">
+          <code><pre>
+        resolve();
+    });
+}
+bot.runGame();
+          </pre></code> 
+       </div>
+       <p>This last part of the code calls back the function resolve and runs through all of the code I wrote. The line, bot.runGame();, runs my bot in the game when it is pushed to the server.</p>
 </body>
+
 </html>

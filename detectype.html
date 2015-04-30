@@ -1,79 +1,116 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link type="text/css" rel='stylesheet' href='detectype.css'/>
+    <link type="text/css" rel='stylesheet' href='detectype.css' />
 </head>
+
 <body>
+    <div id="navbar">
+        <ul>
+            <li><a href="index.html">Home</a>
+            </li>
+            <li><a href="aboutme.html">About Me</a>
+            </li>
+            <li><a href="htmlinfo.html">About HTML/CSS</a>
+            </li>
+            <li><a href="computerhardware.html">Computer Hardware</a>
+            </li>
+            <li><a href="calc.html">Calculator</a>
+            </li>
+            <li><a href="detectype.html">Detectype</a>
+            </li>
+            <li><a href="calendar.html">Calendar</a>
+            </li>
+            <li><a href="clock.html">Clock</a>
+            </li>
+            <li><a href="vindinium.html">Vindinium</a>
+            </li>
+        </ul>
+    </div>
+    <br>
     <table id=header>
         <tr>
             <td class=name>Group</td>
-            <td><h1 id=title>Detectype</h1></td>
+            <td>
+                <h1 id=title>Detectype</h1>
+            </td>
             <td class=name>Generator</td>
         </tr>
     </table>
     <table id=input>
         <tr>
-        <td id=left-display>
-            <form id="myForm" action="form_action.asp">
-  Input Student First Names: <br><textarea id="mytext"></textarea><br><br>
-                Input Number of Groups:<br><select id="dropdown">
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-                </select><br><br>
-  <input type="button" onclick="doTheStuff()" value="Generate Group">
-  <input type="button" onclick="clearButton()" value="Clear">
-            </form>
-        </td>
-          <td><div>
-            <div class="tablesE" id="other">1: </div>
-            <div class="tablesE" id="other">2: </div>
-            <div class="tablesE" id="other">3: </div>
-            <div class="tablesE" id="other">4: </div>
-            <div class="tablesE" id="other">5: </div>
-            <div class="tablesE" id="other">6: </div>
-            <div class="tablesE" id="other">7: </div>
-            <div class="tablesE" id="other">8: </div>
-            <div class="tablesE" id="other">9: </div>
-            <div class="tablesE" id="other">10: </div>
-            <div class="tablesE" id="other">11: </div>
-            <div class="tablesE" id="other">12: </div>
-            <div class="tablesE" id="other">13: </div>
-            <div class="tablesE" id="other">14: </div>
-            <div class="tablesE" id="other">15: </div>
-            </div></td>
-        <td id="display">
-            <div>
-                <div id="table0" class="tables"> </div>
-                <div id="table1" class="tables"> </div>
-                <div id="table2" class="tables"> </div>
-                <div id="table3" class="tables"> </div>
-                <div id="table4" class="tables"> </div>
-                <div id="table5" class="tables"> </div>
-                <div id="table6" class="tables"> </div>
-                <div id="table7" class="tables"> </div>
-                <div id="table8" class="tables"> </div>
-                <div id="table9" class="tables"> </div>
-                <div id="table10" class="tables"> </div>
-                <div id="table11" class="tables"> </div>
-                <div id="table12" class="tables"> </div>
-                <div id="table13" class="tables"> </div>
-                <div id="table14" class="tables"> </div>
-            </div>
-        </td>
+            <td id=left-display>
+                <form id="myForm" action="form_action.asp">
+                    Input Student First Names:
+                    <br>
+                    <textarea id="mytext"></textarea>
+                    <br>
+                    <br>Input Number of Groups:
+                    <br>
+                    <select id="dropdown">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                    </select>
+                    <br>
+                    <br>
+                    <input type="button" onclick="doTheStuff()" value="Generate Group">
+                    <input type="button" onclick="clearButton()" value="Clear">
+                </form>
+            </td>
+            <td>
+                <div>
+                    <div class="tablesE" id="other">1:</div>
+                    <div class="tablesE" id="other">2:</div>
+                    <div class="tablesE" id="other">3:</div>
+                    <div class="tablesE" id="other">4:</div>
+                    <div class="tablesE" id="other">5:</div>
+                    <div class="tablesE" id="other">6:</div>
+                    <div class="tablesE" id="other">7:</div>
+                    <div class="tablesE" id="other">8:</div>
+                    <div class="tablesE" id="other">9:</div>
+                    <div class="tablesE" id="other">10:</div>
+                    <div class="tablesE" id="other">11:</div>
+                    <div class="tablesE" id="other">12:</div>
+                    <div class="tablesE" id="other">13:</div>
+                    <div class="tablesE" id="other">14:</div>
+                    <div class="tablesE" id="other">15:</div>
+                </div>
+            </td>
+            <td id="display">
+                <div>
+                    <div id="table0" class="tables"></div>
+                    <div id="table1" class="tables"></div>
+                    <div id="table2" class="tables"></div>
+                    <div id="table3" class="tables"></div>
+                    <div id="table4" class="tables"></div>
+                    <div id="table5" class="tables"></div>
+                    <div id="table6" class="tables"></div>
+                    <div id="table7" class="tables"></div>
+                    <div id="table8" class="tables"></div>
+                    <div id="table9" class="tables"></div>
+                    <div id="table10" class="tables"></div>
+                    <div id="table11" class="tables"></div>
+                    <div id="table12" class="tables"></div>
+                    <div id="table13" class="tables"></div>
+                    <div id="table14" class="tables"></div>
+                </div>
+            </td>
         </tr>
     </table>
     <script src='detectype.js'></script>
- </body>
+</body>
+
 </html>

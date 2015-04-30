@@ -24,4 +24,31 @@ img{
     position:relative;
     bottom:20px;
 }
-    
+#navbar {
+    border: 2px solid black;
+    border-radius: 20px;
+    font-family: Garamond;
+    font-weight: bold;
+    text-shadow: 3px 2px 3px gray;
+    padding: 5px;
+}
+#navbar ul {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+#navbar li {
+    font-size: 23px;
+    display: inline;
+    list-style: none;
+    margin: 5px;
+}
+#navbar a {
+    text-decoration: none;
+    color: black;
+    padding: 8px 8px 8px 8px;
+}
+#navbar a:hover {
+    color: #dd4c4c;
+    background-color: none;
+}

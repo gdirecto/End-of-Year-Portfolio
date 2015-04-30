@@ -1,34 +1,59 @@
 body {
-  background-image: url("http://mama-beach.com/mama2/wp-content/uploads/2013/07/photodune-4088822-beauty-beach-and-limestone-rocks-l.jpg");
-  background-position:center;
-  background-size:cover;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    background-image: url("http://mama-beach.com/mama2/wp-content/uploads/2013/07/photodune-4088822-beauty-beach-and-limestone-rocks-l.jpg");
+    background-position:center;
+    background-size:cover;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
-
 p {
-  font-family: Arial;
+    font-family: Arial;
 }
-
 #weekday {
-  font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
-  font-weight: bold;
-  color: white;
-  font-size: 6em;
-  text-align: center;
+    font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
+    font-weight: bold;
+    color: white;
+    font-size: 6em;
+    text-align: center;
 }
-
 #date {
-  font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
-  font-weight: bold;
-  color: white;
-  font-size: 6em;
-  text-align: center;
+    font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
+    font-weight: bold;
+    color: white;
+    font-size: 6em;
+    text-align: center;
 }
-
 #clock {
-  font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
-  font-weight: bold;
-  color: white;
-  font-size: 6em;
-  text-align: center;
+    font-family:'Rockwell Extra Bold', 'Rockwell Bold', monospace;
+    font-weight: bold;
+    color: white;
+    font-size: 6em;
+    text-align: center;
+}
+#navbar {
+    border: 2px solid black;
+    border-radius: 20px;
+    font-family: Garamond;
+    font-weight: bold;
+    text-shadow: 3px 2px 3px gray;
+    padding: 5px;
+}
+#navbar ul {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+#navbar li {
+    text-align: center;
+    font-size: 23px;
+    display: inline;
+    list-style: none;
+    margin: 5px;
+}
+#navbar a {
+    text-decoration: none;
+    color: black;
+    padding: 8px 8px 8px 8px;
+}
+#navbar a:hover {
+    color: white;
+    background-color: none;
 }
